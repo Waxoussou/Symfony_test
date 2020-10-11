@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\ApiToken;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,6 +66,10 @@ class ApiController extends AbstractController
             return $this->json('wrong password', 401, ["Content-Type" => "application/json"]);
         }
         $token = json_encode(["user" => $user->getEmail(), "uid" => $user->getId()]);
+        $tok = new ApiToken($user);
+        // $tok->setToken($token);
+        // $tok->setUserRelation($user);
+        dd($tok);
         // sets a HTTP response header
         $resp = new Response();
         $resp->headers->set('X-AUTH-TOKEN',  $token);
