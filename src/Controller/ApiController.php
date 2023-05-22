@@ -67,8 +67,6 @@ class ApiController extends AbstractController
         }
         $token = json_encode(["user" => $user->getEmail(), "uid" => $user->getId()]);
         $tok = new ApiToken($user);
-        // $tok->setToken($token);
-        // $tok->setUserRelation($user);
         dd($tok);
         // sets a HTTP response header
         $resp = new Response();
@@ -78,8 +76,6 @@ class ApiController extends AbstractController
 
         // prints the HTTP headers followed by the content
         $resp->send();
-
-
         return $this->json(["name" => $user->getName(), "lastname" => $user->getLastname()], 200, ["Content-Type" => "application/json"]);
     }
 

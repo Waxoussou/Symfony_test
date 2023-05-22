@@ -51,6 +51,7 @@ class ApiToken
     {
         return $this->token;
     }
+    
 
     public function setToken(string $token): self
     {
